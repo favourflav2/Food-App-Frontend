@@ -13,29 +13,29 @@ interface CartData {
 }
 
 export function get_Popular(){
-    return API.get('/allPopular')
+    return API.get('/food/allPopular')
 }
 
 export function get_Pizza(){
-   return API.get('/allPizza')
+   return API.get('/food/allPizza')
 }
 
 export function get_Pasta(){
-    return API.get('/allPasta')
+    return API.get('/food/allPasta')
 }
 
 export function get_Salad(){
-    return API.get('/allSalad')
+    return API.get('/food/allSalad')
 }
 
 export function get_Desert(){
-    return API.get('/allDesert')
+    return API.get('/food/allDesert')
 }
 
 export function get_Order_Date(data:any){
-    return API.post("/orderDate",data)
+    return API.post("/food/orderDate",data)
 }
 
 export function stripe_Payment(data:CartData){
-    return API.post('/api/create-checkout-session',data)
+    return API.post('/food/api/create-checkout-session',data)
 }
