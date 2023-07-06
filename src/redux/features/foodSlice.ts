@@ -24,7 +24,7 @@ interface FoodState {
   cart: Array<any>;
 
   // Time
-  OrderDate: string | number | null | undefined;
+  OrderDate: string | number | null | undefined
   DateState: dayjs.Dayjs | null | string;
   TimeState: dayjs.Dayjs | null | string;
 
@@ -51,8 +51,8 @@ interface FoodState {
   
 }
 
-const date = new Date();
-const formatDate = dayjs(date).format("ddd, MMMM D h:mma");
+//const date = new Date();
+const formatDate = dayjs().hour() >= 20 ? null : dayjs().format("ddd, MMMM D h:mma");
 const year = dayjs().format("YYYY-MM-DD");
 const time = dayjs().format("YYYY-MM-DDThh:mm");
 
@@ -190,11 +190,11 @@ const foodSlice = createSlice({
     setDateState: (state, action) => {
       //console.log(dayjs(action.payload).format('YYYY-MM-DD'))
       state.DateState = dayjs(action.payload).format("YYYY-MM-DD");
-      console.log(state.DateState);
+      
     },
     setTimeState: (state, action) => {
       state.TimeState = dayjs(action.payload).format("hh:mma");
-      console.log(state.TimeState);
+      
     },
     setHandleClose: (state, action) => {
       //console.log(action.payload)

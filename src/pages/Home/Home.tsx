@@ -88,7 +88,7 @@ export default function Home(props: IHomeProps) {
   const fiveDaysAhead = dayjs().add(5, "day");
   //const formatDate = dayjs(date).format("ddd, MMMM D h:mma");
   const year = dayjs().format("YYYY-MM-DD");
-  const time = dayjs(Date.now()).format("YYYY-MM-DDThh:mm");
+  const time = dayjs().format("YYYY-MM-DDTHH:mm");
   const [expand, setExpand] = React.useState<boolean>(true);
 
   const { OrderDate, selectedItem,cart,DateState,TimeState,loading } = UseSelector((state) => state.food);
@@ -121,6 +121,7 @@ export default function Home(props: IHomeProps) {
 
   
   const subTotalPrice = cart?.reduce((a,c) => a + c.count * c.price, 0)
+ 
   
   //! In order to set up state for my date section/modal i need to set up my redxu state and persit it
   
@@ -267,7 +268,7 @@ export default function Home(props: IHomeProps) {
                 onClick={handleOpen}
               >
                 <CalendarTodayIcon className=" font-light text-[18px] mr-2" />
-                <h3>{OrderDate}</h3>
+                <h3>{OrderDate === null? "Select A Date" : OrderDate}</h3>
               </div>
 
               {/* Time Picker Modal */}
@@ -437,10 +438,24 @@ export default function Home(props: IHomeProps) {
                       disabled={cart.length < 1}
                       className="btnColor w-full p-3 mt-5 rounded-3xl hover:bg-green-700"
                       onClick={()=>{
+                        
+                        
                         const dateState = dayjs(`${DateState} ${TimeState}`,"YYYY-MM-DD hh:mma")
                         
                         const isAfter = dayjs(dateState).isAfter(dayjs())
+
+                        if(OrderDate === null){
+                          return alert("Please select a date")
+                        }
                         
+                        
+                        if(dayjs(timePickerState).hour() < 11){
+                          return alert("We open at 11AM")
+
+                        }else if(dayjs(timePickerState).hour() >= 20){
+                          return alert("We close at 8PM")
+                        }
+
                         if(isAfter){
 
                           if(cart?.length){
@@ -496,7 +511,7 @@ export default function Home(props: IHomeProps) {
                 onClick={handleOpenMobileDate}
               >
                 <CalendarTodayIcon className=" font-light text-[18px] mr-2" />
-                <h3>{OrderDate}</h3>
+                <h3>{OrderDate === null? "Select A Date" : OrderDate}</h3>
               </div>
               
 
@@ -689,20 +704,33 @@ export default function Home(props: IHomeProps) {
                     disabled={cart.length < 1}
                     onClick={()=>{
                       const dateState = dayjs(`${DateState} ${TimeState}`,"YYYY-MM-DD hh:mma")
-                      
-                      const isAfter = dayjs(dateState).isAfter(dayjs())
-                      
-                      if(isAfter){
+                        
+                        const isAfter = dayjs(dateState).isAfter(dayjs())
 
-                        if(cart.length){
-                          dispatch(stripePayment({date:OrderDate,cart:cart}))
-                        }else{
-                          alert("Your cart is empty")
+                        if(OrderDate === null){
+                          return alert("Please select a date")
                         }
                         
-                      }else{
-                        alert("The date you selected is not valid")
-                      }
+                        
+                        if(dayjs(timePickerState).hour() < 11){
+                          return alert("We open at 11AM")
+
+                        }else if(dayjs(timePickerState).hour() >= 20){
+                          return alert("We close at 8PM")
+                        }
+
+                        if(isAfter){
+
+                          if(cart?.length){
+                            //dispatch(stripePayment({date:OrderDate,cart:cart}))
+                          }else{
+                            alert("Your cart is empty")
+                          }
+                          
+                          
+                        }else{
+                          alert("The date you selected is not valid")
+                        }
                       
                     }}
                   >
