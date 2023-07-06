@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NavBar from "./components/navbar/NavBar";
+import Location from "./components/navbar/Location";
+import DirectionModal from "./components/models/DirectionModal";
+import Home from "./pages/Home/Home";
+import SuccessPage from "./pages/Stripe/Success";
+import ErrorPage from "./pages/Stripe/Error";
 
 function App() {
+  // Open State for googel maps
+  //* This allows me to only call the googel maps api when we are directed to the page
+  //! Instead of calling the google api everytime the page is rendered
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <BrowserRouter>
+        <NavBar />
+        <Location handleOpen={handleOpen} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route
+            path="/modal"
+            element={
+              <DirectionModal
+                open={open}
+                handleOpen={handleOpen}
+                handleClose={handleClose}
+                setOpen={setOpen}
+              />
+            }
+          />
+
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/error" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
