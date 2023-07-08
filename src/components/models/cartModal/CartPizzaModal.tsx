@@ -121,9 +121,9 @@ export default function CartPizzaModal(props: ICartPizzaModalProps) {
         >
           <Box className="sm:absolute sm:translate-x-[-50%] sm:translate-y-[-50%] sm:top-[50%] sm:left-[50%] sm:w-[580px] bg-white sm:h-auto h-full sm:rounded-3xl">
             {/* Content */}
-            <Box className="flex flex-col w-full h-full sm:p-6 p-4">
+            <Box className="flex flex-col w-full h-full sm:p-4 p-4">
               {/* Title */}
-              <Box className="flex flex-col w-full border-b border-gray-400 sm:pb-8 pb-2">
+              <Box className="flex flex-col w-full border-b border-gray-400 sm:pb-2 pb-2">
                 <Box className="flex items-center justify-between mb-2">
                   <Typography className="text-[20px] font-bold">
                     {selectedItem?.type}
@@ -133,13 +133,13 @@ export default function CartPizzaModal(props: ICartPizzaModalProps) {
                     className="text-[29px]"
                   />
                 </Box>
-                <Typography className="sm:text-[14px] text-[12px] font-medium">
+                <Typography className="sm:text-[12px] text-[12px] font-medium">
                   {selectedItem?.desc}
                 </Typography>
               </Box>
 
               {/* All Toppings */}
-              <Box className="flex flex-col mt-[7px] mb-[5px]">
+              <Box className="flex flex-col mt-[2px] mb-[5px]">
                 <Box className="flex items-center justify-between">
                   <Typography className="text-[15px] font-bold">
                     Meat Toppings
@@ -230,7 +230,7 @@ export default function CartPizzaModal(props: ICartPizzaModalProps) {
                     <div className="border-b border-gray-400 py-2"></div>
 
                     {/* Title for veggies */}
-                    <Box className="flex items-center justify-between pt-3 mb-[5px]">
+                    <Box className="flex items-center justify-between pt-1 mb-[5px]">
                       <Typography className="text-[15px] font-bold">
                         Veggie Toppings
                       </Typography>
@@ -363,7 +363,7 @@ export default function CartPizzaModal(props: ICartPizzaModalProps) {
                   id=""
                   value={textAera}
                   maxLength={80}
-                  className="border border-gray-400 h-[120px] resize-none p-2 text-[15px]"
+                  className="border border-gray-400 h-[80px] resize-none p-2 text-[15px]"
                   onChange={(e) => setTextArea(e.target.value)}
                 ></textarea>
                 <span className=" absolute bottom-0 right-1">80</span>
