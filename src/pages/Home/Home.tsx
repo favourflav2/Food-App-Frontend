@@ -104,16 +104,17 @@ export default function Home(props: IHomeProps) {
 
   
 
-  
+//! MY react useEffect is commented is because getting the sql from my backend it taking to long..... 
+//* So whenever i add anything to my sql database all i have to do is go to my backend and console log the new data array
 
-  React.useEffect(() => {
-    dispatch(getPopular());
-    dispatch(getPizza());
-    dispatch(getPasta());
-    dispatch(getSalad());
-    dispatch(getDesert());
-    // eslint-disable-next-line
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(getPopular());
+  //   dispatch(getPizza());
+  //   dispatch(getPasta());
+  //   dispatch(getSalad());
+  //   dispatch(getDesert());
+  //   // eslint-disable-next-line
+  // }, []);
 
   if(loading){
     return <div className="absolute translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]  ">
