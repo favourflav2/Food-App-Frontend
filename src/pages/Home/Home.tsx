@@ -94,10 +94,12 @@ export default function Home(props: IHomeProps) {
   const { OrderDate, selectedItem,cart,DateState,TimeState,loading } = UseSelector((state) => state.food);
   const dispatch = Dispatch();
   const [datePickerState, setDatePickerState] = React.useState<Dayjs | null>(
-    dayjs(year)
+    //dayjs(year)
+    null
   );
   const [timePickerState, setTimePickerState] = React.useState<Dayjs | null>(
-    dayjs(time)
+    //dayjs(time)
+    null
   );
 
   
@@ -722,7 +724,7 @@ export default function Home(props: IHomeProps) {
                         if(isAfter){
 
                           if(cart?.length){
-                            //dispatch(stripePayment({date:OrderDate,cart:cart}))
+                            dispatch(stripePayment({date:OrderDate,cart:cart}))
                           }else{
                             alert("Your cart is empty")
                           }
