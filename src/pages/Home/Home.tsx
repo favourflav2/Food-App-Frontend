@@ -737,7 +737,6 @@ export default function Home(props: IHomeProps) {
                       
                     }}
                   >
-                    {" "}
                     Checkout
                   </Button>
                 </div>

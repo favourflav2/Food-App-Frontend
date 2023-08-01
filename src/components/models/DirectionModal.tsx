@@ -284,21 +284,38 @@ export default function DirectionModal({
 
               {/* Hours Data */}
               {value === "Pick Up" && (
-                <Box className="w-full h-full py-4 flex flex-col">
-                  {hourData.map((item: any, index: any) => (
-                    <Box
-                      className="flex items-center justify-between my-[6px]"
-                      key={index}
-                    >
-                      <Typography className="sm:text-[14px] text-[16px] font-medium">
-                        {item.day}
-                      </Typography>
-                      <Typography className="sm:text-[14px] text-[16px] font-medium">
-                        {item.hour}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
+                isNonMobile ? 
+                (
+                <Box className="w-full h-full py-1 flex flex-col">
+                {hourData.map((item: any, index: any) => (
+                  <Box
+                    className="flex items-center justify-between my-[6px]"
+                    key={index}
+                  >
+                    <Typography className="sm:text-[14px] text-[16px] font-medium">
+                      {item.day}
+                    </Typography>
+                    <Typography className="sm:text-[14px] text-[16px] font-medium">
+                      {item.hour}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>)
+              :
+              (
+              <div className="flex flex-col h-full w-full py-3">
+              <div className="flex items-center justify-between my-1">
+                  <h2 className="sm:text-[14px] text-[16px] font-medium">Monday - Friday</h2>
+                  <h2 className="sm:text-[14px] text-[16px] font-medium">11:00am - 8:00pm</h2>
+              </div>
+
+              <div className="flex items-center justify-between my-1">
+                  <h2 className="sm:text-[14px] text-[16px] font-medium">Saturday - Sunday</h2>
+                  <h2 className="sm:text-[14px] text-[16px] font-medium">12:00pm - 8:00pm</h2>
+              </div>
+          </div>
+          )
+                 
               )}
               {value === "Delivery" && (
                 <Box className="w-full py-[50px] h-full flex justify-center ">
@@ -314,3 +331,20 @@ export default function DirectionModal({
     </>
   );
 }
+
+
+{/* <Box className="w-full h-full py-1 flex flex-col">
+                   {hourData.map((item: any, index: any) => (
+                     <Box
+                       className="flex items-center justify-between my-[6px]"
+                       key={index}
+                     >
+                       <Typography className="sm:text-[14px] text-[16px] font-medium">
+                         {item.day}
+                       </Typography>
+                       <Typography className="sm:text-[14px] text-[16px] font-medium">
+                         {item.hour}
+                       </Typography>
+                     </Box>
+                   ))}
+                 </Box> */}
