@@ -67,16 +67,11 @@ export default function Home(props: IHomeProps) {
     setAnchorEl(null);
   };
 
-  //const [orderTodayDate, setOrderTodayDate] = React.useState<any>();
-  //const date = new Date();
-  //const today = dayjs();
-  //const aheadTenMin = dayjs().add(2, "m");
+
   const elevenAM = dayjs().set("hour", 11).startOf("hour");
   const eightPM = dayjs().set("hour", 20).startOf("hour");
   const fiveDaysAhead = dayjs().add(5, "day");
-  //const formatDate = dayjs(date).format("ddd, MMMM D h:mma");
-  // const year = dayjs().format("YYYY-MM-DD");
-  // const time = dayjs().format("YYYY-MM-DDTHH:mm");
+
   const [expand, setExpand] = React.useState<boolean>(true);
 
   const { OrderDate, selectedItem, cart, DateState, TimeState,loading } = UseSelector((state) => state.food);
@@ -90,23 +85,7 @@ export default function Home(props: IHomeProps) {
     null
   );
 
-  //! MY react useEffect is commented is because getting the sql from my backend it taking to long.....
-  //* So whenever i add anything to my sql database all i have to do is go to my backend and console log the new data array
-
-  // React.useEffect(() => {
-  //   dispatch(getPopular());
-  //   dispatch(getPizza());
-  //   dispatch(getPasta());
-  //   dispatch(getSalad());
-  //   dispatch(getDesert());
-  //   // eslint-disable-next-line
-  // }, []);
-
-  // if(loading){
-  //   return <div className="absolute translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]  ">
-  //     <CircularProgress />
-  //   </div>
-  //  }
+ 
 
   const subTotalPrice = cart?.reduce((a, c) => a + c.count * c.price, 0);
 

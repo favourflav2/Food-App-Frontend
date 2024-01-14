@@ -42,10 +42,13 @@ export default function Location({handleOpen}: ILocationProps) {
           <h5 className="sm:text-[15px] text-[13px] font-medium mr-2">
           3327 Las Vegas Blvd S ste 2710, Las Vegas, NV 89109, USA
           </h5>
-          <span className="text-[15px] font-medium underline cursor-pointer transition ease-in-out delay-150  hover:-translate-y-[1px] hover:scale-108 duration-300 hover:text-blue-700" onClick={()=>{
+          {/* <span className="text-[15px] font-medium underline cursor-pointer transition ease-in-out delay-150  hover:-translate-y-[1px] hover:scale-108 duration-300 hover:text-blue-700" onClick={()=>{
             navigate("/modal")
             handleOpen()
           }}>
+            More Info
+          </span> */}
+          <span className="text-[15px] font-medium underline cursor-pointer transition ease-in-out delay-150  hover:-translate-y-[1px] hover:scale-108 duration-300 hover:text-blue-700" >
             More Info
           </span>
         </div>
